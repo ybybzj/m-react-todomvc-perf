@@ -2,7 +2,7 @@ var numberOfItemsToAdd = 100;
 var Suites = [];
 Suites.push({
     name: 'mReact',
-    url: 'todomvc/vue/index.html',
+    url: 'todomvc/m-react/index.html',
     version: '0.2.9',
     prepare: function (runner, contentWindow, contentDocument) {
         return runner.waitForElement('#new-todo').then(function (element) {
@@ -15,9 +15,10 @@ Suites.push({
             for (var i = 0; i < numberOfItemsToAdd; i++) {
                 var keydownEvent = document.createEvent('Event');
                 keydownEvent.initEvent('keyup', true, true);
-                keydownEvent.which = 13;// VK_ENTER
                  
                 newTodo.value = 'Something to do ' + i;
+                newTodo.dispatchEvent(keydownEvent);
+                keydownEvent.which = 13;// VK_ENTER
                 newTodo.dispatchEvent(keydownEvent);
             }
         }),
