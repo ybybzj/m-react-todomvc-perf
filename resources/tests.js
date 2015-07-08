@@ -14,9 +14,9 @@ Suites.push({
         new BenchmarkTestStep('Adding' + numberOfItemsToAdd + 'Items', function (newTodo, contentWindow, contentDocument) {
             for (var i = 0; i < numberOfItemsToAdd; i++) {
                 var keydownEvent = document.createEvent('Event');
-                keydownEvent.initEvent('keydown', true, true);
-                 
+                keydownEvent.initEvent('keyup', true, true);
                 keydownEvent.which = 13;// VK_ENTER
+                 
                 newTodo.value = 'Something to do ' + i;
                 newTodo.dispatchEvent(keydownEvent);
             }
